@@ -7,7 +7,9 @@ import  todoRoutes  from "./routes/todoRoutes.js";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "*",
+}));
 app.use(express.json());
 connectDB();
 app.get('/',(req,res)=>{
